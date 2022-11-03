@@ -1,7 +1,8 @@
 <?php
 
 spl_autoload_register(function ($class) {
-    include $class . '.php';
+    if (file_exists("$class" . '.php'))
+        include $class . '.php';
 });
 
 session_start();
