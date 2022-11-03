@@ -4,14 +4,11 @@ namespace Fw\Core;
 
 class Config
 {
-    private static array $config;
+    private static ?array $config = null;
     public static function get(string $path)
     {
-        $config = include_once __DIR__ . "/../config.php";
-
-        if ($config !== true) // если еще не был подключен
-            static::$config = $config;
-
+        if (static::$config === null)
+            static::$config = include_once __DIR__ . "/../config.php";
 
         $path = explode("/", $path);
         $result = static::$config;
