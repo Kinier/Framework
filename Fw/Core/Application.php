@@ -3,22 +3,41 @@ namespace Fw\Core;
 
 
 class Application{
-    private static ?Application $instance = null;
 
-    private static ?object $pager = null;
+    private ?object $template = null;
+    /**
+     * @var array|false|string|string[]
+     */
+    private $content;
 
-    private static ?object $template = null;
-
-    private function __construct(){
+    public function __construct(){
 
     }
 
-    public static function getInstance(): Application
-    {
-        if (!isset(static::$instance)){
-            static::$instance = new static();
-        }
 
-        return static::$instance;
+    public function header(){
+        $this->startBuffer();
+    }
+
+    public function footer()
+    {
+        $this->endBuffer();
+    }
+
+    private function startBuffer(){
+        ob_start();
+        include __DIR__ ."/../templates/" . Config::get('templateSettings/template') . '/header.php';
+    }
+
+    private function endBuffer(){
+        include __DIR__. "/../templates/" . Config::get('templateSettings/template') . '/footer.php';
+        $content = ob_get_contents();
+
+        ob_end_clean();
+        echo $content;
+    }
+
+    private function restartBuffer(){
+        ob_clean();
     }
 }
