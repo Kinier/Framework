@@ -2,20 +2,19 @@
 namespace Fw\Core;
 
 
-class Application{
+class Application
+{
 
     private ?object $template = null;
-    /**
-     * @var array|false|string|string[]
-     */
-    private $content;
+    
 
-    public function __construct(){
-
+    public function __construct()
+    {
     }
 
 
-    public function header(){
+    public function header()
+    {
         $this->startBuffer();
     }
 
@@ -24,12 +23,14 @@ class Application{
         $this->endBuffer();
     }
 
-    private function startBuffer(){
+    private function startBuffer()
+    {
         ob_start();
         include __DIR__ ."/../templates/" . Config::get('templateSettings/template') . '/header.php';
     }
 
-    private function endBuffer(){
+    private function endBuffer()
+    {
         include __DIR__. "/../templates/" . Config::get('templateSettings/template') . '/footer.php';
         $content = ob_get_contents();
 
@@ -45,11 +46,11 @@ class Application{
             }
         }
         ob_end_clean();
-        
         echo $content;
     }
 
-    private function restartBuffer(){
+    private function restartBuffer()
+    {
         ob_clean();
     }
 }
