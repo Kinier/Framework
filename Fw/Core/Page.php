@@ -11,20 +11,17 @@ class Page{
     private array $cssLink;
     private array $string;
     private array $properties;
-
+    // мб так просто
     public function addString(string $src){
-        if (!in_array($src, $this->string))
-            $this->string[] = $src;
+        $this->string[] = $string;
     }
 
     public function addJs(string $src){
-        if (!in_array($src, $this->jsSrc))
-            $this->jsSrc[] = $src;
+        $this->jsSrc[$src] = "<script src=\"$src\" type='text/javascript'></script>";
     }
 
     public function addCss(string $link): void{
-        if (!in_array($link, $this->cssLink))
-            $this->cssLink[] = $link;
+        $this->cssLink[$link] = "<link rel='stylesheet' href=\"$link\"/>";
     }
 
     public function setProperty(string $id, $value): void{
