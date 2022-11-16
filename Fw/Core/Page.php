@@ -13,27 +13,33 @@ class Page
     private array $string;
     private array $properties;
     // мб так просто
-    public function addString(string $src){
+    public function addString(string $string)
+    {
         $this->string[] = $string;
     }
 
-    public function addJs(string $src){
+    public function addJs(string $src)
+    {
         $this->jsSrc[$src] = "<script src=\"$src\" type='text/javascript'></script>";
     }
 
-    public function addCss(string $link): void{
+    public function addCss(string $link): void
+    {
         $this->cssLink[$link] = "<link rel='stylesheet' href=\"$link\"/>";
     }
 
-    public function setProperty(string $id, $value): void{
+    public function setProperty(string $id, $value): void
+    {
         $this->properties[$id] = $value;
     }
 
 
-    public function getProperty(string $id):string{
+    public function getProperty(string $id):string
+    {
         return $this->properties[$id];
     } // получение по ключу
-    public function showProperty(string $id){
+    public function showProperty(string $id)
+    {
         echo "#FW_PAGE_PROPERTY_{$id}#";
     } // выводит макрос для будущей замены #FW_PAGE_PROPERY_{$id}#
     public function getAllReplace(): array
@@ -47,7 +53,8 @@ class Page
         }
         return $array;
     } // получает массив макросов и значений для замены
-    public function showHead(){
+    public function showHead()
+    {
         echo "#FW_MACRO_CSS#" . PHP_EOL;
         echo "#FW_MACRO_JS#" . PHP_EOL;
         echo "#FW_MACRO_STRING#" . PHP_EOL;
