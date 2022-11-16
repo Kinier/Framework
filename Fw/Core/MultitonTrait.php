@@ -2,7 +2,8 @@
 
 namespace Fw\Core;
 
-trait MultitonTrait{
+trait MultitonTrait
+{
 
     protected static array $instances = [];
 
