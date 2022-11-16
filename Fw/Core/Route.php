@@ -3,6 +3,7 @@
 namespace Fw\Core;
 
 
-class Route{
+class Route
+{
 
 }
