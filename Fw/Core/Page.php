@@ -3,7 +3,8 @@
 
 namespace Fw\Core;
 
-class Page{
+class Page
+{
 
     private static ?Page $instance = null;
     // для мапа модуль ds нужен
