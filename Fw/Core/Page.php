@@ -45,9 +45,9 @@ class Page
     public function getAllReplace(): array
     {
         $array = [];
-        $array["#FW_MACRO_CSS#"] = $this->cssLink;
-        $array["#FW_MACRO_JS#"] = $this->jsSrc;
-        $array["#FW_MACRO_STRING#"] = $this->string;
+        $array["#FW_MACRO_CSS#"] = implode("", $this->cssLink);
+        $array["#FW_MACRO_JS#"] = implode("", $this->jsSrc);
+        $array["#FW_MACRO_STRING#"] = implode("", $this->string);
         foreach ($this->properties as $id => $property){
             $array["#FW_PAGE_PROPERTY_{$id}"] = $property;
         }

@@ -6,7 +6,7 @@ class Application
 {
 
     private ?object $template = null;
-    
+
 
     public function __construct()
     {
@@ -36,15 +36,8 @@ class Application
 
         $replace = Page::getInstance()->getAllReplace();
 
+        $content = str_replace(array_keys($replace), $replace, $content);
 
-        foreach ($replace as $macro => $value) {
-            if (is_array($value)) {
-                $str = implode('', $value);
-                $content = str_replace($macro, $str, $content);
-            } else {
-                $content = str_replace($macro, $value, $content);
-            }
-        }
         ob_end_clean();
         echo $content;
     }
