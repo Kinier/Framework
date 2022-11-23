@@ -3,7 +3,7 @@
 use Fw\Core\Component\Base;
 use Fw\Core\Component\Template;
 
-class Component extends Base
+class ElementList extends Base
 {
 
 

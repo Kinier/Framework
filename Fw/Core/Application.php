@@ -3,7 +3,6 @@
 namespace Fw\Core;
 
 
-use Component;
 use Fw\Core\Component\Template;
 use Fw\Core\Type\Request;
 use Fw\Core\Type\Server;
@@ -65,9 +64,11 @@ class Application
     public static function includeComponent(string $component, string $templateId, array $params)
     {
         [$namespace, $componentId] = explode(':', $component, 2);
+
         include_once sprintf("%s/../components/%s/%s/.class.php", __DIR__, $namespace, $componentId);
 
-        $component = new Component($templateId, $namespace, $componentId, $params);
+        $className = str_replace('.', '', $componentId);
+        $component = new $className($templateId, $namespace, $componentId, $params);
 
 
         $component->executeComponent();
