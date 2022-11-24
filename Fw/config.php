@@ -1,8 +1,8 @@
 <?php
 
 return $config = [
-    'db' => [
-        'bazis' => 'test'
+    'templateSettings' => [
+        'template' => 'default'
     ],
     'db2' => [
         'dbVlozh' => [
